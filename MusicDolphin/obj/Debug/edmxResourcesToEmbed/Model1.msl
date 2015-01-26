@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MusicDolphinDBModelStoreContainer" CdmEntityContainer="MDEntities">
     <EntitySetMapping Name="Album">
-      <EntityTypeMapping TypeName="MusicDolphinDBModel.Album">
+      <EntityTypeMapping TypeName="IsTypeOf(MusicDolphinDBModel.Album)">
         <MappingFragment StoreEntitySet="Album">
           <ScalarProperty Name="albumNr" ColumnName="albumNr" />
           <ScalarProperty Name="albumName" ColumnName="albumName" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Artist">
-      <EntityTypeMapping TypeName="MusicDolphinDBModel.Artist">
+      <EntityTypeMapping TypeName="IsTypeOf(MusicDolphinDBModel.Artist)">
         <MappingFragment StoreEntitySet="Artist">
           <ScalarProperty Name="artistNr" ColumnName="artistNr" />
           <ScalarProperty Name="artistName" ColumnName="artistName" />
@@ -21,16 +21,16 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RecordLabel">
-      <EntityTypeMapping TypeName="MusicDolphinDBModel.RecordLabel">
+      <EntityTypeMapping TypeName="IsTypeOf(MusicDolphinDBModel.RecordLabel)">
         <MappingFragment StoreEntitySet="RecordLabel">
-          <ScalarProperty Name="picture" ColumnName="picture" />
           <ScalarProperty Name="companyNr" ColumnName="companyNr" />
           <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Review">
-      <EntityTypeMapping TypeName="MusicDolphinDBModel.Review">
+      <EntityTypeMapping TypeName="IsTypeOf(MusicDolphinDBModel.Review)">
         <MappingFragment StoreEntitySet="Review">
           <ScalarProperty Name="revNr" ColumnName="revNr" />
           <ScalarProperty Name="date" ColumnName="date" />
@@ -45,7 +45,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Track">
-      <EntityTypeMapping TypeName="MusicDolphinDBModel.Track">
+      <EntityTypeMapping TypeName="IsTypeOf(MusicDolphinDBModel.Track)">
         <MappingFragment StoreEntitySet="Track">
           <ScalarProperty Name="trackID" ColumnName="trackID" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -56,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="MusicDolphinDBModel.User">
+      <EntityTypeMapping TypeName="IsTypeOf(MusicDolphinDBModel.User)">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="username" ColumnName="username" />
         </MappingFragment>

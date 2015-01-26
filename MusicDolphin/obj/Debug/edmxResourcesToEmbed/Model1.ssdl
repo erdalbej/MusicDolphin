@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="MusicDolphinDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="MusicDolphinDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Album">
     <Key>
       <PropertyRef Name="albumNr" />
@@ -55,7 +55,7 @@
     </Key>
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="ALBUM_ARTIST_FK">
+  <Association Name="FK_ALBUM_ARTIST_FK">
     <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
     <End Role="Album" Type="Self.Album" Multiplicity="*" />
     <ReferentialConstraint>
@@ -67,7 +67,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ARTIST_RECORDLABEL_FK">
+  <Association Name="FK_ARTIST_RECORDLABEL_FK">
     <End Role="RecordLabel" Type="Self.RecordLabel" Multiplicity="0..1" />
     <End Role="Artist" Type="Self.Artist" Multiplicity="*" />
     <ReferentialConstraint>
@@ -79,7 +79,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="REV_ALBUMNR_FK">
+  <Association Name="FK_REV_ALBUMNR_FK">
     <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
     <End Role="Review" Type="Self.Review" Multiplicity="*" />
     <ReferentialConstraint>
@@ -91,7 +91,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="REV_ARTISTNR_FK">
+  <Association Name="FK_REV_ARTISTNR_FK">
     <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
     <End Role="Review" Type="Self.Review" Multiplicity="*" />
     <ReferentialConstraint>
@@ -103,7 +103,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="REV_COMPANYNR_FK">
+  <Association Name="FK_REV_COMPANYNR_FK">
     <End Role="RecordLabel" Type="Self.RecordLabel" Multiplicity="0..1" />
     <End Role="Review" Type="Self.Review" Multiplicity="*" />
     <ReferentialConstraint>
@@ -115,7 +115,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="REV_TRACKID_FK">
+  <Association Name="FK_REV_TRACKID_FK">
     <End Role="Track" Type="Self.Track" Multiplicity="0..1" />
     <End Role="Review" Type="Self.Review" Multiplicity="*" />
     <ReferentialConstraint>
@@ -127,7 +127,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="REV_USERNAME_FK">
+  <Association Name="FK_REV_USERNAME_FK">
     <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="Review" Type="Self.Review" Multiplicity="*" />
     <ReferentialConstraint>
@@ -139,7 +139,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="TRACK_ALBUM_FK">
+  <Association Name="FK_TRACK_ALBUM_FK">
     <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
     <End Role="Track" Type="Self.Track" Multiplicity="*" />
     <ReferentialConstraint>
@@ -158,35 +158,35 @@
     <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="ALBUM_ARTIST_FK" Association="Self.ALBUM_ARTIST_FK">
+    <AssociationSet Name="FK_ALBUM_ARTIST_FK" Association="Self.FK_ALBUM_ARTIST_FK">
       <End Role="Artist" EntitySet="Artist" />
       <End Role="Album" EntitySet="Album" />
     </AssociationSet>
-    <AssociationSet Name="ARTIST_RECORDLABEL_FK" Association="Self.ARTIST_RECORDLABEL_FK">
+    <AssociationSet Name="FK_ARTIST_RECORDLABEL_FK" Association="Self.FK_ARTIST_RECORDLABEL_FK">
       <End Role="RecordLabel" EntitySet="RecordLabel" />
       <End Role="Artist" EntitySet="Artist" />
     </AssociationSet>
-    <AssociationSet Name="REV_ALBUMNR_FK" Association="Self.REV_ALBUMNR_FK">
+    <AssociationSet Name="FK_REV_ALBUMNR_FK" Association="Self.FK_REV_ALBUMNR_FK">
       <End Role="Album" EntitySet="Album" />
       <End Role="Review" EntitySet="Review" />
     </AssociationSet>
-    <AssociationSet Name="REV_ARTISTNR_FK" Association="Self.REV_ARTISTNR_FK">
+    <AssociationSet Name="FK_REV_ARTISTNR_FK" Association="Self.FK_REV_ARTISTNR_FK">
       <End Role="Artist" EntitySet="Artist" />
       <End Role="Review" EntitySet="Review" />
     </AssociationSet>
-    <AssociationSet Name="REV_COMPANYNR_FK" Association="Self.REV_COMPANYNR_FK">
+    <AssociationSet Name="FK_REV_COMPANYNR_FK" Association="Self.FK_REV_COMPANYNR_FK">
       <End Role="RecordLabel" EntitySet="RecordLabel" />
       <End Role="Review" EntitySet="Review" />
     </AssociationSet>
-    <AssociationSet Name="REV_TRACKID_FK" Association="Self.REV_TRACKID_FK">
+    <AssociationSet Name="FK_REV_TRACKID_FK" Association="Self.FK_REV_TRACKID_FK">
       <End Role="Track" EntitySet="Track" />
       <End Role="Review" EntitySet="Review" />
     </AssociationSet>
-    <AssociationSet Name="REV_USERNAME_FK" Association="Self.REV_USERNAME_FK">
+    <AssociationSet Name="FK_REV_USERNAME_FK" Association="Self.FK_REV_USERNAME_FK">
       <End Role="User" EntitySet="User" />
       <End Role="Review" EntitySet="Review" />
     </AssociationSet>
-    <AssociationSet Name="TRACK_ALBUM_FK" Association="Self.TRACK_ALBUM_FK">
+    <AssociationSet Name="FK_TRACK_ALBUM_FK" Association="Self.FK_TRACK_ALBUM_FK">
       <End Role="Album" EntitySet="Album" />
       <End Role="Track" EntitySet="Track" />
     </AssociationSet>

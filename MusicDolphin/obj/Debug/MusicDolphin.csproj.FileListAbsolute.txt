@@ -16,3 +16,17 @@ c:\Users\Erdal Bejtula\Documents\Visual Studio 2013\Projects\MusicDolphin\MusicD
 C:\Users\Erdal Bejtula\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.exe.config
 C:\Users\Erdal Bejtula\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.exe
 C:\Users\Erdal Bejtula\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.pdb
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.exe.config
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.exe
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.pdb
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.exe
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.pdb
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.dll
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.xml
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.Form1.resources
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.Form2.resources
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.Properties.Resources.resources
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.UserControl1.resources
+C:\Users\Daniel\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.csproj.GenerateResource.Cache
