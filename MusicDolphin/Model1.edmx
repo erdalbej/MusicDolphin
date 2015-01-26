@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MusicDolphinDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="albumNr" />
+          </Key>
+          <Property Name="albumNr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="albumName" Type="varchar" MaxLength="30" />
+          <Property Name="year" Type="varchar" MaxLength="30" />
+          <Property Name="artistNr" Type="int" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="artistNr" />
+          </Key>
+          <Property Name="artistNr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="artistName" Type="varchar" MaxLength="50" />
+          <Property Name="companyNr" Type="int" />
+        </EntityType>
+        <EntityType Name="RecordLabel">
+          <Key>
+            <PropertyRef Name="companyNr" />
+          </Key>
+          <Property Name="companyNr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="companyName" Type="varchar" MaxLength="50" />
+          <Property Name="picture" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="revNr" />
+          </Key>
+          <Property Name="revNr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="varchar" MaxLength="20" />
+          <Property Name="rating" Type="int" />
+          <Property Name="comments" Type="varchar" MaxLength="300" />
+          <Property Name="companyNr" Type="int" />
+          <Property Name="artistNr" Type="int" />
+          <Property Name="albumNr" Type="int" />
+          <Property Name="trackID" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="trackID" />
+          </Key>
+          <Property Name="trackID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="length" Type="varchar" MaxLength="30" />
+          <Property Name="year" Type="varchar" MaxLength="30" />
+          <Property Name="albumNr" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="ALBUM_ARTIST_FK">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="artistNr" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="artistNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARTIST_RECORDLABEL_FK">
+          <End Role="RecordLabel" Type="Self.RecordLabel" Multiplicity="0..1" />
+          <End Role="Artist" Type="Self.Artist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordLabel">
+              <PropertyRef Name="companyNr" />
+            </Principal>
+            <Dependent Role="Artist">
+              <PropertyRef Name="companyNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_ALBUMNR_FK">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="albumNr" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="albumNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_ARTISTNR_FK">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="artistNr" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="artistNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_COMPANYNR_FK">
+          <End Role="RecordLabel" Type="Self.RecordLabel" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordLabel">
+              <PropertyRef Name="companyNr" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="companyNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_TRACKID_FK">
+          <End Role="Track" Type="Self.Track" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Track">
+              <PropertyRef Name="trackID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="trackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_USERNAME_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRACK_ALBUM_FK">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Track" Type="Self.Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="albumNr" />
+            </Principal>
+            <Dependent Role="Track">
+              <PropertyRef Name="albumNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MusicDolphinDBModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordLabel" EntityType="Self.RecordLabel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="ALBUM_ARTIST_FK" Association="Self.ALBUM_ARTIST_FK">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="ARTIST_RECORDLABEL_FK" Association="Self.ARTIST_RECORDLABEL_FK">
+            <End Role="RecordLabel" EntitySet="RecordLabel" />
+            <End Role="Artist" EntitySet="Artist" />
+          </AssociationSet>
+          <AssociationSet Name="REV_ALBUMNR_FK" Association="Self.REV_ALBUMNR_FK">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_ARTISTNR_FK" Association="Self.REV_ARTISTNR_FK">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_COMPANYNR_FK" Association="Self.REV_COMPANYNR_FK">
+            <End Role="RecordLabel" EntitySet="RecordLabel" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_TRACKID_FK" Association="Self.REV_TRACKID_FK">
+            <End Role="Track" EntitySet="Track" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_USERNAME_FK" Association="Self.REV_USERNAME_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="TRACK_ALBUM_FK" Association="Self.TRACK_ALBUM_FK">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Track" EntitySet="Track" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MusicDolphinDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="albumNr" />
+          </Key>
+          <Property Name="albumNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="albumName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="artistNr" Type="Int32" />
+          <NavigationProperty Name="Artist" Relationship="Self.ALBUM_ARTIST_FK" FromRole="Album" ToRole="Artist" />
+          <NavigationProperty Name="Review" Relationship="Self.REV_ALBUMNR_FK" FromRole="Album" ToRole="Review" />
+          <NavigationProperty Name="Track" Relationship="Self.TRACK_ALBUM_FK" FromRole="Album" ToRole="Track" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="artistNr" />
+          </Key>
+          <Property Name="artistNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="artistName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyNr" Type="Int32" />
+          <NavigationProperty Name="Album" Relationship="Self.ALBUM_ARTIST_FK" FromRole="Artist" ToRole="Album" />
+          <NavigationProperty Name="RecordLabel" Relationship="Self.ARTIST_RECORDLABEL_FK" FromRole="Artist" ToRole="RecordLabel" />
+          <NavigationProperty Name="Review" Relationship="Self.REV_ARTISTNR_FK" FromRole="Artist" ToRole="Review" />
+        </EntityType>
+        <EntityType Name="RecordLabel">
+          <Key>
+            <PropertyRef Name="companyNr" />
+          </Key>
+          <Property Name="companyNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="companyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Artist" Relationship="Self.ARTIST_RECORDLABEL_FK" FromRole="RecordLabel" ToRole="Artist" />
+          <NavigationProperty Name="Review" Relationship="Self.REV_COMPANYNR_FK" FromRole="RecordLabel" ToRole="Review" />
+          <Property Name="picture" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="revNr" />
+          </Key>
+          <Property Name="revNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="comments" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="companyNr" Type="Int32" />
+          <Property Name="artistNr" Type="Int32" />
+          <Property Name="albumNr" Type="Int32" />
+          <Property Name="trackID" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Album" Relationship="Self.REV_ALBUMNR_FK" FromRole="Review" ToRole="Album" />
+          <NavigationProperty Name="Artist" Relationship="Self.REV_ARTISTNR_FK" FromRole="Review" ToRole="Artist" />
+          <NavigationProperty Name="RecordLabel" Relationship="Self.REV_COMPANYNR_FK" FromRole="Review" ToRole="RecordLabel" />
+          <NavigationProperty Name="Track" Relationship="Self.REV_TRACKID_FK" FromRole="Review" ToRole="Track" />
+          <NavigationProperty Name="User" Relationship="Self.REV_USERNAME_FK" FromRole="Review" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Track">
+          <Key>
+            <PropertyRef Name="trackID" />
+          </Key>
+          <Property Name="trackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="length" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="albumNr" Type="Int32" />
+          <NavigationProperty Name="Album" Relationship="Self.TRACK_ALBUM_FK" FromRole="Track" ToRole="Album" />
+          <NavigationProperty Name="Review" Relationship="Self.REV_TRACKID_FK" FromRole="Track" ToRole="Review" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Review" Relationship="Self.REV_USERNAME_FK" FromRole="User" ToRole="Review" />
+        </EntityType>
+        <Association Name="ALBUM_ARTIST_FK">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="artistNr" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="artistNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_ALBUMNR_FK">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="albumNr" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="albumNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRACK_ALBUM_FK">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Track" Type="Self.Track" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="albumNr" />
+            </Principal>
+            <Dependent Role="Track">
+              <PropertyRef Name="albumNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ARTIST_RECORDLABEL_FK">
+          <End Role="RecordLabel" Type="Self.RecordLabel" Multiplicity="0..1" />
+          <End Role="Artist" Type="Self.Artist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordLabel">
+              <PropertyRef Name="companyNr" />
+            </Principal>
+            <Dependent Role="Artist">
+              <PropertyRef Name="companyNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_ARTISTNR_FK">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="artistNr" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="artistNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_COMPANYNR_FK">
+          <End Role="RecordLabel" Type="Self.RecordLabel" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordLabel">
+              <PropertyRef Name="companyNr" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="companyNr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_TRACKID_FK">
+          <End Role="Track" Type="Self.Track" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Track">
+              <PropertyRef Name="trackID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="trackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REV_USERNAME_FK">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Album" EntityType="Self.Album" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" />
+          <EntitySet Name="RecordLabel" EntityType="Self.RecordLabel" />
+          <EntitySet Name="Review" EntityType="Self.Review" />
+          <EntitySet Name="Track" EntityType="Self.Track" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="ALBUM_ARTIST_FK" Association="Self.ALBUM_ARTIST_FK">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="REV_ALBUMNR_FK" Association="Self.REV_ALBUMNR_FK">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="TRACK_ALBUM_FK" Association="Self.TRACK_ALBUM_FK">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Track" EntitySet="Track" />
+          </AssociationSet>
+          <AssociationSet Name="ARTIST_RECORDLABEL_FK" Association="Self.ARTIST_RECORDLABEL_FK">
+            <End Role="RecordLabel" EntitySet="RecordLabel" />
+            <End Role="Artist" EntitySet="Artist" />
+          </AssociationSet>
+          <AssociationSet Name="REV_ARTISTNR_FK" Association="Self.REV_ARTISTNR_FK">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_COMPANYNR_FK" Association="Self.REV_COMPANYNR_FK">
+            <End Role="RecordLabel" EntitySet="RecordLabel" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_TRACKID_FK" Association="Self.REV_TRACKID_FK">
+            <End Role="Track" EntitySet="Track" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+          <AssociationSet Name="REV_USERNAME_FK" Association="Self.REV_USERNAME_FK">
+            <End Role="User" EntitySet="User" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MusicDolphinDBModelStoreContainer" CdmEntityContainer="MDEntities">
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="MusicDolphinDBModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="albumNr" ColumnName="albumNr" />
+                <ScalarProperty Name="albumName" ColumnName="albumName" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="artistNr" ColumnName="artistNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artist">
+            <EntityTypeMapping TypeName="MusicDolphinDBModel.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="artistNr" ColumnName="artistNr" />
+                <ScalarProperty Name="artistName" ColumnName="artistName" />
+                <ScalarProperty Name="companyNr" ColumnName="companyNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordLabel">
+            <EntityTypeMapping TypeName="MusicDolphinDBModel.RecordLabel">
+              <MappingFragment StoreEntitySet="RecordLabel">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="companyNr" ColumnName="companyNr" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Review">
+            <EntityTypeMapping TypeName="MusicDolphinDBModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="revNr" ColumnName="revNr" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="companyNr" ColumnName="companyNr" />
+                <ScalarProperty Name="artistNr" ColumnName="artistNr" />
+                <ScalarProperty Name="albumNr" ColumnName="albumNr" />
+                <ScalarProperty Name="trackID" ColumnName="trackID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Track">
+            <EntityTypeMapping TypeName="MusicDolphinDBModel.Track">
+              <MappingFragment StoreEntitySet="Track">
+                <ScalarProperty Name="trackID" ColumnName="trackID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="albumNr" ColumnName="albumNr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="MusicDolphinDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

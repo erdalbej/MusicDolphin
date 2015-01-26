@@ -1,0 +1,18 @@
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.exe.config
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.exe
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.pdb
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.dll
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.xml
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.csprojResolveAssemblyReference.cache
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.Form1.resources
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.Properties.Resources.resources
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.csproj.GenerateResource.Cache
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.exe
+c:\users\erdal bejtula\documents\visual studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.pdb
+c:\Users\Erdal Bejtula\Documents\Visual Studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.UserControl1.resources
+c:\Users\Erdal Bejtula\Documents\Visual Studio 2013\Projects\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.Form2.resources
+C:\Users\Erdal Bejtula\Documents\GitHub\MusicDolphin\MusicDolphin\bin\Debug\MusicDolphin.exe.config
+C:\Users\Erdal Bejtula\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.exe
+C:\Users\Erdal Bejtula\Documents\GitHub\MusicDolphin\MusicDolphin\obj\Debug\MusicDolphin.pdb
